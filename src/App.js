@@ -1,29 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; // Note the change here: Switch is replaced with Routes
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Note the change here: Switch is replaced with Routes
 import Registration from './views/Registration';
 import Login from './views/Login';
+import Navbar from './components/Navbar';
+import Dashboard from './views/Dashboard';
 
 const App = () => {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </nav>
-        <h1>WELCOME </h1>
-        {/* Use Routes instead of Switch */}
-        <Routes>
-          <Route path="/register" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        {/* Add more routes for your application */}
+      </Routes>
     </Router>
   );
 };
